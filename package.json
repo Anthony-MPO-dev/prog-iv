@@ -1,0 +1,24 @@
+{
+  "name": "npm_code",
+  "version": "1.0.0",
+  "description": "Aula 0 de prog_iv",
+  "main": "index.js",
+  "scripts": { 
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anthony-MPO-dev/prog-iv.git"
+  },
+  "author": "Anthony M. P. de Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anthony-MPO-dev/prog-iv/issues"
+  },
+  "homepage": "https://github.com/Anthony-MPO-dev/prog-iv#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
