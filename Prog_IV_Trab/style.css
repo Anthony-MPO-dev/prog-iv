@@ -1,0 +1,72 @@
+form{
+    padding-top: 150px;
+    width: 60%;
+    text-align: left;
+}
+
+.box-1{
+    width: 100%;
+}
+
+.box-1_1{
+    width: 30%;
+    float: left;
+}
+
+.box-1_2{
+    text-align: justify;
+    padding-top: 20px;
+    margin-left: 5%;
+    width: 65%;
+    float: right;
+}
+
+/*estilo de tamanho dos inputs*/
+.input_G{
+    width: 98%;
+}
+
+.input_M{
+    width: 48%;
+}
+
+/*pequeno espaço*/
+.space{
+    margin-right: 10px;;
+}
+
+.space2{
+    padding-left: 0.5%;
+    padding-right: 5%;
+}
+
+/*alinhamento das Disciplinas*/
+.alinhamento{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/*Validação de input*/
+input:invalid {
+    border-color: red !important;
+}
+
+input:valid {
+    border-color: black !important;  
+}
+
+/*Fieldsets*/
+.field_1{
+    margin-bottom: 40px;
+}
+
+.field_2{
+
+}
+
+/*Estilo da tabela de horarios*/
+table, th, td {
+    border: 1px solid;
+    text-align: center;
+}

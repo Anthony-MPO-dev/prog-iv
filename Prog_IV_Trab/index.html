@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+
+    <!-- Estilo da pagina -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+    <center>
+    <form>
+        <fieldset>
+        <legend>Formulário de Cadastro</legend>
+            
+            <fieldset class="field_1">
+            <legend>Dados Pessoais</legend>
+
+                <label for="lname">Nome Completo</label><br>
+                <input type="text" class="input_G" id="nome" name="nome" maxlength="50"><br>
+                
+                <div class="box-1">
+                    <div class="box-1_1">
+                        <label for="lemail">Email</label><br>
+                        <input type="email" class="input_G" placeholder="email@mail.com"  id="email" name="email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br>
+                        
+                        <label for="lcidade">Cidade</label><br>
+                        <input type="text" class="input_G" id="cidade" name="cidade">
+                    </div>
+
+                    <div class="box-1_2">
+                        <label for="ldata_nascimento">Data de Nascimento </label>
+                        <input type="date" id="data_nascimento" name="data_nascimento"><br><br>
+                        
+                        <label for="lestado">Estado</label>
+                        <select id="estado" class="space" name="estado">
+                            <option value="MT">MT</option>
+                            <option value="RO">RO</option>
+                            <option value="SP">SP</option>
+                            <option value="RJ">RJ</option>
+                        </select>
+
+                        <label for="html">Sexo: </label>
+                        <input type="radio" id="masculino" name="sexo" value="Masc.">
+                        <label for="html">Masc. </label>
+                        <input type="radio" id="feminino" name="sexo" value="Fem.">
+                        <label for="html">Fem.</label>
+                    </div>
+                </div>
+
+            </fieldset>
+        
+            <fieldset class="field_2">
+                <legend>Informações Acadêmicas</legend>
+
+                <label for="lRGA">RGA</label><br>
+                <input type="text" placeholder="000000000000" pattern="[0-9]+$"  required class="input_M" id="RGA" name="RGA" minlength="12" maxlength="12"><br>
+                
+                <br>
+
+                <label for="ldisciplinas">Disciplinas já realizadas (se aprovado)</label><br>
+                <div class="alinhamento">
+                    
+                    <label for="lEDI">
+                    <input type="checkbox" name="Disciplina" value="Estrutura de dados 1">
+                    Estrutura de dados 1</label> 
+
+                    <label for="lEDII">
+                    <input type="checkbox" name="Disciplina" value="Estrutura de dados 2" >
+                    Estrutura de dados 2</label> 
+
+                    <label for="lProg2">
+                    <input type="checkbox" name="Disciplina" value="Programação 2">
+                    Programação 2</label> 
+
+                    <label for="lProg3">
+                    <input type="checkbox" name="Disciplina" value="Programação 3">
+                    Programação 3</label> 
+
+                </div>
+                
+                <br>
+
+                <label for="ldisciplinas">Horararios reservados para aulas síncronas:</label><br>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                    </tr>
+                    <tr>
+                        <td>7:30 às 9:30</td>
+                        <td><input type="checkbox" name="Seg" value="1_SEG"></td>
+                        <td><input type="checkbox" name="Ter" value="1_TER"></td>
+                        <td><input type="checkbox" name="Qua" value="1_QUA"></td>
+                        <td><input type="checkbox" name="Qui" value="1_QUI"></td>
+                        <td><input type="checkbox" name="Sex" value="1_SEX"></td>
+                    </tr>
+                    <tr>
+                        <td>9:30 às 11:30"</td>
+                        <td><input type="checkbox" name="Seg" value="2_SEG"></td>
+                        <td><input type="checkbox" name="Ter" value="2_TER"></td>
+                        <td><input type="checkbox" name="Qua" value="2_QUA"></td>
+                        <td><input type="checkbox" name="Qui" value="2_QUI"></td>
+                        <td><input type="checkbox" name="Sex" value="2_SEX"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>13:30 às 15:30</td>
+                        <td><input type="checkbox" name="Seg" value="3_SEG"></td>
+                        <td><input type="checkbox" name="Ter" value="3_TER"></td>
+                        <td><input type="checkbox" name="Qua" value="3_QUA"></td>
+                        <td><input type="checkbox" name="Qui" value="3_QUI"></td>
+                        <td><input type="checkbox" name="Sex" value="3_SEX"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>15:30 às 17:30</td>
+                        <td><input type="checkbox" name="Seg" value="4_SEG"></td>
+                        <td><input type="checkbox" name="Ter" value="4_TER"></td>
+                        <td><input type="checkbox" name="Qua" value="4_QUA"></td>
+                        <td><input type="checkbox" name="Qui" value="4_QUI"></td>
+                        <td><input type="checkbox" name="Sex" value="4_SEX"></td>
+                        
+                    </tr>
+                </table>
+
+
+            </fieldset>
+            
+        </fieldset>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Limpar">
+    </form>
+    </center>
+    
+</body>
+</html>

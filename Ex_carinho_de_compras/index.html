@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>SHOP</title>
+</head>
+<body>
+    <div class="contents">
+
+        <!--######################################### LOJA DE PRODUTOS ##################################################-->
+
+        <div class="ls-shop">
+
+            <header class="head-shop">
+                <div style="width: 100%; margin-bottom: 10px;">
+                    <label style="font-weight: bold;" for="produtos">Escolha um Produto Growth:</label>
+                    <select id="produtos" form="form_produtos">
+                        <option style="display: none;" value="none">Produtos</option>
+                        <option value="Creatina">Creatina Monohidratada</option>
+                        <option value="Multivitaminico">Multivitaminico</option>
+                        <option value="Whey">Whey Protein</option>
+                        <option value="Pre">Pré Treino</option>
+                    </select>
+                </div>
+                <div style="text-align: center; width: 100%;">
+                    <a href="#add" onclick="AddProducts()" class="ls-btn-add-product" >Adicionar ao Carrinho</a>
+                </div>
+            </header>
+
+            <hr>
+
+            <!--============================================= VITRINE DE PRODUTOS ==========================================================-->
+
+            <div class="Product_display">
+                    <img class="product_img" src="https://www.gsuplementos.com.br/upload/produto/imagem/creatina-100g-creapure-growth-supplements.png" >
+                    <br>
+                    <label>Creatina Monohidratada: R$ 99,99</label>   
+            </div>
+            <hr>
+            <div class="Product_display">
+                    <img class="product_img" src="https://www.gsuplementos.com.br/upload/growth-layout-personalizado/produto/107/produto-principal.png" >
+                    <br>
+                    <label>Multivitaminico: R$ 36,99</label>   
+            </div>
+            <hr>
+            <div class="Product_display">
+                    <img class="product_img" src="https://cf.shopee.com.br/file/b847389dbf62bf758b94f84a93f4ccd5" >
+                    <br>
+                    <label>Whey Protein: R$ 112,99</label>   
+            </div>
+            <hr>
+            <div class="Product_display">
+                    <img class="product_img" src="https://www.gsuplementos.com.br/upload/growth-layout-personalizado/produto/38/cafeina420mg-120cps.png" >
+                    <br>
+                    <label>Pré--Treino: R$ 26,99</label>   
+            </div>
+            <hr>
+            <footer class="ls-cart-footer ls-txt-center">
+            </footer>
+
+            <!--======================================== FIM DA VITRINE DE PRODUTOS =====================================================-->
+        
+        </div>
+        <!--################################################### FIM DA LOJA ##########################################################-->
+
+
+
+        <!--#################################### CARRINHO DE COMPRAS ###############################################-->
+
+        <div class="outside-cart">
+            <div class="ls-cart">
+                <div class="size-cart">
+                    <img class="ls-ico-cart" src="images/shoping_basket.png" >
+                </div>
+                <div class="ls-ajust-txt" style="padding-left: 20px;" >
+                    <div>
+                        <h3 >MEU CARRINHO</h3>
+                        <strong id="num_produtos">0 produto(s)</strong> 
+                    </div>                
+                </div>
+                <div id="verify">
+                    <div id="button-dropdown-up"  class="dropdown" onclick="troca_button()">
+                        <img src="images/seta-para-cima.png"  class="button-dropdown">
+                    </div>
+                </div>
+
+            </div>
+           
+            <!--=============================Conteudo do Carrinho de compras======================================-->
+        
+            <div id="cart-content" class="ls-cart-content">
+                <div class="background-products">
+                    <h2 class="ls-title-product">
+                        Produtos Selecionados:
+                    </h2>
+                    <ul id="carrinho" class="ls-products-shop-style">
+                        <li id="car-content" style="display: none;">
+                            <p> (Identificador) </p>
+                            <a href="">Excluir</a>
+                        </li>
+                    </ul>
+                </div>
+                <footer class="ls-cart-footer ls-txt-center">
+                    <p id="total_price" class="ls-total-produtos">Total: $0,00</p>
+                    <hr>
+                    <div class="btns-primary">
+                        <a href="" class="ls-btn-primary">Finalizar Compra</a>
+                        <a href="" class="ls-btn-primary">Limpar Compra</a>
+                    </div>
+                </footer>
+            </div>
+
+            <!--=============================FIM do Carrinho de Compras======================================-->
+        </div>
+        <!--################################# FIM CARRINHO DE COMPRAS #############################################-->
+       
+    </div>
+
+    <script src="js/funcs.js"></script>
+</body>
+</html>
