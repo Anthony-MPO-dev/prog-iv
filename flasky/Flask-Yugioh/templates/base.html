@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  {% block styles %}
+            <!-- Bootstrap CSS -->
+            {{ bootstrap.load_css() }}
+  {% endblock %}
+  <title>Yugioh Library</title>
+  <link rel="stylesheet" href={{url_for('static', filename='style.css')}}>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+  
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1">Yugioh Library</span>
+    </nav>
+    
+      <div class="row align-items-center">
+        <div class="col-auto text">
+          <label for="name">Nome</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" id="name" placeholder="Pesquisa por nome">
+        </div>
+        <div class="col-auto text">
+          <label for="type">Tipo</label>
+        </div>
+        <div class="col-auto">
+          <select class="form-control" id="type">
+            <option> </option>
+            <option>Effect Monster</option>
+            <option>Flip Effect Monster</option>
+            <option>Flip Tuner Effect Monster</option>
+            <option>Gemini Monster</option>
+            <option>Normal Monster</option>
+            <option>Normal Tuner Monster</option>
+            <option>Pendulum Effect Monster</option>
+            <option>Pendulum Flip Effect Monster</option>
+            <option>Pendulum Normal Monster</option>
+            <option>Pendulum Tuner Effect Monster</option>
+            <option>Ritual Effect Monster</option>
+            <option>Ritual Monster</option>
+            <option>Skill Card</option>
+            <option>Spell Card</option>
+            <option>Spirit Monster</option>
+            <option>Toon Monster</option>
+            <option>Trap Card</option>
+            <option>Tuner Monster</option>
+            <option>Union Effect Monster</option>
+            <option>Fusion Monster</option>
+            <option>Link Monster</option>
+            <option>Pendulum Effect Fusion Monster</option>
+            <option>Synchro Monster</option>
+            <option>Synchro Pendulum Effect Monster</option>
+            <option>Synchro Tuner Monster</option>
+            <option>XYZ Monster</option>
+            <option>XYZ Pendulum Effect Monster</option>
+          </select>
+        </div>
+        <div class="col"><button class="btn btn-primary" onclick="submit_entry()">Enviar</button></div>
+    
+  </div>
+  <main>
+    
+    <section class="cardDecks">
+      {% block cardDecks %}
+      {% endblock %}
+    </section>
+  </main>
+</body>
+
+{%block script%}
+<script>
+
+  function encodeQueryData(data) {
+    const ret = [];
+    for (let d in data)
+      ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+    return ret.join('&');
+  }
+
+  function submit_entry(){
+    
+    var name = document.getElementById("name").value.replace(/ /g, '%20');
+    var type = document.getElementById("type") 
+    console.log(name);
+    let teste = name;
+
+    var url = ''
+
+    if(teste != "" && type.value != ""){
+      let data = { 'name': ''+name+'', 'type': ''+type.value+''};
+      let querystring = encodeQueryData(data);
+      url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?"+querystring;
+    }else if (teste =! "" && type.value == ""){
+      console.log(name);
+      url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?name="+name+''
+    }else if (teste == ""){
+        url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type="+type.value;
+    }else{
+      url = "https://db.ygoprodeck.com/api/v7/cardinfo.php";
+    }
+    console.log(url);
+
+    var entry = {
+      request: url
+    }
+    fetch('/get',{
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(entry),
+      cache: "no-cache",
+      headers: new Headers({
+        "content-type" : "application/json"
+      })
+    })
+    .then(function(response){
+      if(response.status !== 200){
+        console.log('Response status was not 200 ${response.status}');
+        return ;
+      }
+      response.json().then(function (data) {
+        //console.log(data)
+        render(data);
+        
+      })
+    })
+  }
+
+  function render(data){
+    var x = document.getElementsByClassName('cardDecks')[0]
+    while(x.firstChild){
+      x.removeChild(x.lastChild)
+    }
+    for(var p = 0; p<data.data.length; p++){
+      var el = document.createElement("div");
+      el.setAttribute('class', 'cards')
+      el.setAttribute('data-name',data.data[p].name)
+      el.setAttribute('data-type','['+data.data[p].type+']')
+      el.setAttribute('tabindex',p)
+
+        //fig and image
+        var fig = document.createElement("figure")
+        fig.setAttribute('class','cards-figure')
+
+        
+        var img = document.createElement("img")
+        img.setAttribute('src', 'https://images.ygoprodeck.com/images/cards/'+data.data[p].id+'.jpg')
+        img.setAttribute('class', 'size_img')
+      
+
+        fig.appendChild(img);
+
+        //description
+        var cont_desc = document.createElement("div")
+            cont_desc.setAttribute('id', 'content-'+data.data[p].id)
+            cont_desc.setAttribute('class','content-desc')
+
+          var desc = document.createElement("section")
+            desc.setAttribute('class','cards-description')
+              var id = document.createElement("span")
+                id.setAttribute('class','cards-id')
+                id.textContent = '#'+data.data[p].id
+              var h1 = document.createElement("h1")
+                h1.setAttribute('class','cards-name')
+                h1.textContent = data.data[p].name
+              var divtype = document.createElement("div")
+                divtype.setAttribute('class','cards-types')  
+                  var typebg = document.createElement('span')
+                  typebg.setAttribute('class','background-steel')
+                  typebg.textContent = data.data[p].type
+                  divtype.appendChild(typebg)
+                
+
+          desc.appendChild(id)
+          desc.appendChild(h1)
+          desc.appendChild(divtype)
+          desc.appendChild(typebg)
+
+          var desc2 = document.createElement("section")
+            desc2.setAttribute('class','cards-description2')
+            var divtype2 = document.createElement("div")
+                divtype2.setAttribute('class','cards-types')
+                var typebg2 = document.createElement('span')
+                  typebg2.textContent = data.data[p].desc
+                  divtype2.appendChild(typebg2)
+        
+          desc2.appendChild(divtype2)
+          desc2.appendChild(typebg2)
+
+      cont_desc.appendChild(desc)
+      cont_desc.appendChild(desc2)
+      
+
+      el.appendChild(fig)
+      el.appendChild(cont_desc)
+
+    x.appendChild(el)
+
+    }
+  }
+
+</script>
+<!-- MDB -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+{%endblock%}
+</html>
