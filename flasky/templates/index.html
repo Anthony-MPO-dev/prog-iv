@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+{% import "bootstrap5/form.html" as wtf %}
+{%block title%}SUPLEMENTS STORE{%endblock%}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='style.css')}}">
+{% endblock %}
+
+{%block page_content%}
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>OS MELHORES SUPLEMENTOS E VITAMINICOS</h1>
+        </div>
+        <div class="col-sm-6 bg-image hover-zoom">
+            <img class="img-index w-100 hover-shadow" src="https://imagensemoldes.com.br/wp-content/uploads/2020/06/Imagem-Academia-PNG.png" alt="">
+        </div>
+    </div>
+{%endblock%}

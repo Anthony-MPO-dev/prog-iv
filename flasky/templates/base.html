@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+        {% block styles %}
+            <!-- Bootstrap CSS -->
+            {{ bootstrap.load_css() }}
+        {% endblock %}
+
+        <title>{%block title%}{%endblock%}</title>
+        {% endblock %}
+    </head>
+    <body>
+        {%block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong shadow-sm p-3 mb-5 bg-white rounded" >
+            <a class="text-dark navbar-brand ms-3" href="/">BOOST SUPLEMENTS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav ">
+                    <a class="text-secondary nav-item nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="/">Home </a>
+                    <a class="text-dark nav-item nav-link {% if request.endpoint == 'cadastro' %}active{% endif %}" href="/cadastro_de_suplementos">Cadastrar </a>
+                    <a class=" text-dark nav-item nav-link {% if request.endpoint == 'list' %}active{% endif %}" href="/suplies">Suplementos </a>
+                
+              </div>
+            </div>
+          </nav>
+        {%endblock%}
+        <!-- Your page content -->
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    
+                    {% for category, message in messages %}
+                        
+                        <div class="alert alert-{{category}}">
+                            {{ message }}
+                        </div>
+                        
+                    {% endfor %}
+                    
+                {% endif %}
+            {% endwith %}
+        </div>
+        {% block content %}
+            <div class="container mt-5">
+                <div class="page-header">
+                    {%block page_content%} {%endblock%}
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block scripts %}
+            <!-- Optional JavaScript -->
+            {{ bootstrap.load_js() }}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,7 @@
+{% extends "base.html"%}
+{% import "bootstrap5/form.html" as wtf %}
+{%block title%}Formulário de Cadastro{%endblock%}
+
+{%block page_content%}
+{{wtf.render_form(form)}}
+{%endblock%}
